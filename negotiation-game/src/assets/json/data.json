@@ -1,0 +1,76 @@
+{
+  "good": [
+    {
+      "id": 1,
+      "name": "Gold",
+      "quantity": 250,
+      "image": "https://images.unsplash.com/photo-1610375461246-83df859d849d?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400"
+    },
+    {
+      "id": 2,
+      "name": "Silver",
+      "quantity": 250,
+      "image": "https://images.unsplash.com/photo-1616536368667-99f53a750fb8?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400"
+    },
+    {
+      "id": 3,
+      "name": "Platinum",
+      "quantity": 250,
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Platinum-nugget.jpg/400px-Platinum-nugget.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Sapphires",
+      "quantity": 250,
+      "image": "https://images.unsplash.com/photo-1613843351058-1dd06fda7c02?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400"
+    },
+    {
+      "id": 5,
+      "name": "Rubies",
+      "quantity": 250,
+      "image": "https://images.unsplash.com/photo-1551122087-f99a4ade46ce?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400"
+    },
+    {
+      "id": 6,
+      "name": "Diamonds",
+      "quantity": 250,
+      "image": "https://images.unsplash.com/photo-1599707367072-cd6ada2bc375?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400"
+    },
+    {
+      "id": 7,
+      "name": "Iron",
+      "quantity": 250,
+      "image": "https://upload.wikimedia.org/wikipedia/commons/6/68/Iron-135048.jpg?20100426040644"
+    },
+    {
+      "id": 8,
+      "name": "Aluminum",
+      "quantity": 250,
+      "image": "https://upload.wikimedia.org/wikipedia/commons/5/5d/Aluminium-4.jpg"
+    },
+    {
+      "id": 9,
+      "name": "Copper",
+      "quantity": 250,
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/NatCopper.jpg/400px-NatCopper.jpg?20170505225106"
+    },
+    {
+      "id": 10,
+      "name": "Tin",
+      "quantity": 250,
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Tin.jpg/400px-Tin.jpg?20131005161611"
+    },
+    {
+      "id": 11,
+      "name": "Silicon",
+      "quantity": 250,
+      "image": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Silicon1.jpg?20110531123555"
+    },
+    {
+      "id": 12,
+      "name": "Nickel",
+      "quantity": 250,
+      "image": "https://upload.wikimedia.org/wikipedia/commons/5/57/Nickel_chunk.jpg"
+    }
+  ]
+}

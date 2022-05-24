@@ -1,0 +1,24 @@
+@use './variables' as v;
+
+.App-header {
+  background-color: v.$header-color;
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  justify-content: center;
+  height: 10rem;
+  font-size: 1.3rem;
+  color: white;
+
+  .GoodsBox {
+    min-width: 5.5rem;
+    height: 5.5rem;
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-position: center;
+      object-fit: cover;
+    }
+  }
+}
