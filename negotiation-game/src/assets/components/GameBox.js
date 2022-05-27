@@ -1,9 +1,17 @@
-import React from 'react'
+import React from 'react';
+import NegBox from './NegBox';
 
 const GameBox = () => {
   return (
-    <section>
+    <section
+      className='GameBox'
+    >
       GameBox
+      <NegBox />
+      <NegBox />
+      <NegBox />
+      <NegBox />
+      <NegBox />
     </section>
   )
 }
