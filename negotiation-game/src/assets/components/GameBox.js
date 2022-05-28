@@ -1,17 +1,21 @@
 import React from 'react';
 import NegBox from './NegBox';
+import '../scss/_GameBox.scss';
 
 const GameBox = () => {
   return (
     <section
-      className='GameBox'
+      className='GameBoxCtnr'
     >
-      GameBox
-      <NegBox />
-      <NegBox />
-      <NegBox />
-      <NegBox />
-      <NegBox />
+      <div className="gameBox">
+
+        GameBox
+        <NegBox />
+        <NegBox />
+        <NegBox />
+        <NegBox />
+        <NegBox />
+      </div>
     </section>
   )
 }

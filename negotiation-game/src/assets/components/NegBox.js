@@ -1,10 +1,13 @@
 import React from 'react';
 import PaidPortCtnr from './PaidPortCtnr';
 import SelectRes from './SelectRes';
+import '../scss/_NegBox.scss';
 
 const NegBox = () => {
   return (
-    <div>NegBox
+    <div 
+      className='NegBox'
+    >
       <PaidPortCtnr />
       <SelectRes />
     </div>

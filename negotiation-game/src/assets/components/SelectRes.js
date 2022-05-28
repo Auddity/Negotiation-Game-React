@@ -1,9 +1,14 @@
-import React from 'react'
+import React from 'react';
+import '../scss/_SelectRes.scss';
 
 const SelectRes = () => {
   return (
-    <div>SelectRes</div>
+    <div
+      className='SelectRes'
+    >
+      SelectRes
+    </div>
   )
 }
 
-export default SelectRes
+export default SelectRes;
