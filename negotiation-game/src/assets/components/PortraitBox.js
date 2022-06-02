@@ -1,8 +1,10 @@
 import React from 'react'
 
-const PortraitBox = () => {
+const PortraitBox = ({newGame}) => {
   return (
-    <div>PortraitBox</div>
+    <div>PortraitBox
+      {/* <img src={newGame} alt="temp" /> */}
+    </div>
   )
 }
 
