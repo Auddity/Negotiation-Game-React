@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useNavigate } from 'react-router-dom'
 import './App.scss';
 import data from './assets/json/data.json';
 import Layout from './assets/components/Layout';
@@ -9,6 +9,7 @@ import GameBox from './assets/components/GameBox';
 function App() {
   const {newGame, setNewGame} = useState(false);
   const {newNpc, setNewNpc} = useState({})
+  const navigate = useNavigate()
   
   // useEffect(() => {
   //   fetch('https://randomuser.me/api/')
@@ -16,14 +17,20 @@ function App() {
   //     .then(data => setNewNpc(data.results[0]))
   // }, [newGame])
 
-  
+  const startGame = () => {
+    // Code that loads game assets.
+
+    navigate('game')    
+  }
 
   return (
     <Routes>
       <Route path="/" element={<Layout 
         goodsData={data}
       />} >
-        <Route index element={<Welcome />} />
+        <Route index element={<Welcome 
+          startGame={startGame}
+        />} />
         <Route path="game" element={<GameBox /> } />
       </Route>
 
