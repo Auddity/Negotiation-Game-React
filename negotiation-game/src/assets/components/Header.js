@@ -1,6 +1,6 @@
 import React from 'react';
 import GoodsBox from './GoodsBox';
-import '../scss/_header.scss';
+import '../scss/_Header.scss';
 import { ACTIONS } from '../../App';
 
 const Header = ({ headerGoods, newGame, dispatch }) => {
