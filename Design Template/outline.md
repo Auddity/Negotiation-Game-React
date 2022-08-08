@@ -2,7 +2,7 @@
 Based on Forge Of Empires mini game.
 
 # Landing Page
-- A Title Welcoming player to game.
+~~- A Title Welcoming player to game.~~
 - A Custom Radio to select difficulty.
 - A Button to Start Game.
   ## Button Action
@@ -32,7 +32,7 @@ Based on Forge Of Empires mini game.
     - **IF** Offer is *Correct* the Background of the good in the left column becomes Green
       - A Checkmakr replaces the Select Resource Button
     - **IF** Offer is for the *Wrong Person* the Background remains Yellow.
-      - The Select REsource Button Remains
+      - The Select Resource Button Remains
   - In conjunction with the above actions, text stating each status appears between the column/portrait and the Buttons.
   - Also the **Turns Left** display is reduced by 1
 
@@ -65,7 +65,7 @@ Selecting a Good to offer is repeated five times to fill the negotiation board
 
 ## Pay & Negotiate is Clicked
 [Post Click](#post-click-display)
-[Game Operation UX](#resource-quantity-removed-after-payment)
+[Game Operation](#resource-quantity-removed-after-payment)
 
 This Operation is Repeated Until the Turns run out. **IF** not successful a modal pops up saying 'You failed! You chose poorly' **Else** a modal pops up saying 'Success! You chose wisely' (With a pic of the Templar Knight from IJ&TLC)
 

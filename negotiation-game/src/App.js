@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useReducer } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom'
 import './App.scss';
 import api from './api/goods';
@@ -6,9 +6,25 @@ import Layout from './assets/components/Layout';
 import Welcome from './assets/components/Welcome';
 import GameBox from './assets/components/GameBox';
 
+export const ACTIONS = {
+  SELECTED: 'selected'
+}
+
+const reducer = (newGame, { type, payload }) => {
+  switch(type) {
+    case ACTIONS.SELECTED:
+      return { ...newGame, difficulty: payload }
+     
+      
+    default:
+  }
+}
+
 function App() {
   const [headerGoods, setHeaderGoods] = useState([])
-  const [newGame, setNewGame] = useState(false);
+  const [newGame, dispatch] = useReducer(reducer, {
+    difficulty: 'easy'
+  });
   const [newNpc, setNewNpc] = useState({})
   const navigate = useNavigate()
   
@@ -37,10 +53,14 @@ function App() {
     navigate('game')    
   }
 
+  console.log(newGame);
+
   return (
     <Routes>
       <Route path="/" element={<Layout 
         headerGoods={headerGoods}
+        newGame={newGame}
+        dispatch={dispatch}
       />} >
         <Route index element={<Welcome 
           startGame={startGame}
