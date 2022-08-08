@@ -2,7 +2,7 @@ import React from 'react';
 import NegBox from './NegBox';
 import '../scss/_GameBox.scss';
 
-const GameBox = ({newGame}) => {
+const GameBox = ({ newGame }) => {
   const negKeys = [1, 2, 3, 4, 5]
   
   return (
@@ -10,8 +10,9 @@ const GameBox = ({newGame}) => {
       className='GameBoxCtnr'
     >
       <div className="gameBox">
-        {negKeys.map(item => {
+        {negKeys.map((item, i) => {
           return <NegBox 
+            key={i}
             id={item}
             // newGame={newGame}
           />

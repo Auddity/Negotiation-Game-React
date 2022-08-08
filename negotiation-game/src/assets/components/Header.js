@@ -9,6 +9,7 @@ const Header = ({ headerGoods }) => {
       {
         headerGoods.map(item => {
           return <GoodsBox
+            key={item.id}
             id={item.id}
             name={item.name}
             quantity={item.quantity}
