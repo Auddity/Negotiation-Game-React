@@ -2,12 +2,12 @@ import React from 'react';
 import GoodsBox from './GoodsBox';
 import '../scss/_header.scss';
 
-const Header = ({ goodsData }) => {
+const Header = ({ headerGoods }) => {
   
   return (
     <header className='App-header'>
       {
-        goodsData.good.map(item => {
+        headerGoods.map(item => {
           return <GoodsBox
             id={item.id}
             name={item.name}
