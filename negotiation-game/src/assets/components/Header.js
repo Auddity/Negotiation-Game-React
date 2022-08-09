@@ -7,17 +7,19 @@ const Header = ({ headerGoods, newGame, dispatch }) => {
   
   return (
     <header className='App-header'>
-      {
-        headerGoods.map(item => {
-          return <GoodsBox
+      {/* <div className="goodsBoxCtnr"> */}
+        {
+          headerGoods.map(item => {
+            return <GoodsBox
             key={item.id}
             id={item.id}
             name={item.name}
             quantity={item.quantity}
             image={item.image}
-          />
-        })
-      }
+            />
+          })
+        }
+      {/* </div> */}
       <form className="difficultyCtnr">
         <fieldset>
           <input 

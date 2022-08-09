@@ -27,6 +27,10 @@
 
   .difficultyCtnr { 
     padding-block-start: 1.5rem;
+    @media screen and(min-width: 947px) {
+      position: absolute;     
+      top: 8rem;
+    }
 
     fieldset {
       border: none;
@@ -44,13 +48,22 @@
 
       label {
         display: inline-block;
-        background-color: #ddd;
+        background-color: #ddd; 
         color: black;
+        padding-block: 1rem;
+        padding-inline: 1.5rem;
         border-radius: 3px;
+        cursor: pointer;
 
-        &:hover {
+        &:nth-child(4) {
+          margin-inline: 1.2rem;
+        }
+
+        &:hover, &:focus {
           background-color: #dfd;
         }
+
+        
       }
     }
   }
