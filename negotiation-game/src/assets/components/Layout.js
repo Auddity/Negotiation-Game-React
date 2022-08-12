@@ -6,7 +6,6 @@ const Layout = ({ headerGoods, newGame, dispatch }) => {
   return (
     <div>
       <Header
-        headerGoods={headerGoods}
         newGame={newGame}
         dispatch={dispatch}
       />

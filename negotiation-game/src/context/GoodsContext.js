@@ -1,10 +1,9 @@
 import { createContext, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import api from '../api/goods';
 
 const GoodsContext = createContext({});
 
-export const DataProvider = ({ children }) => {
+export const GoodsProvider = ({ children }) => {
   // Place state and handle funcitons here
   const [headerGoods, setHeaderGoods] = useState([])
 

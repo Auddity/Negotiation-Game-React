@@ -1,12 +1,13 @@
 import React from 'react';
 import GoodsBox from './GoodsBox';
 import '../scss/_Header.scss';
-import { ACTIONS } from '../../App';
 import { useContext } from 'react';
+import GameContext, { ACTIONS } from '../../context/GameContext';
 import GoodsContext from '../../context/GoodsContext';
 
-const Header = ({ newGame, dispatch }) => {
+const Header = () => {
   const { headerGoods } = useContext(GoodsContext)
+  const { newGame, dispatch } = useContext(GameContext)
 
   return (
     <header className='App-header'>
