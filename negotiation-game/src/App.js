@@ -1,7 +1,7 @@
-import { useState, useEffect, useReducer } from 'react';
+import { useState, useReducer } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom'
+import { DataProvider } from './context/GoodsContext';
 import './App.scss';
-import api from './api/goods';
 import Layout from './assets/components/Layout';
 import Welcome from './assets/components/Welcome';
 import GameBox from './assets/components/GameBox';
@@ -21,31 +21,11 @@ const reducer = (newGame, { type, payload }) => {
 }
 
 function App() {
-  const [headerGoods, setHeaderGoods] = useState([])
   const [newGame, dispatch] = useReducer(reducer, {
     difficulty: 'easy'
   });
   const [newNpc, setNewNpc] = useState({})
   const navigate = useNavigate()
-  
-  useEffect(() => {
-    const fetchGoods = async () => {
-      try {
-        const response = await api.get('/goods')
-        setHeaderGoods(response.data)
-      } catch(err) {
-        if(err.response) {
-          console.log(err.response.data);
-          console.log(err.response.status);
-          console.log(err.response.headers);
-        } else {
-          console.log(`Error: ${err.message}`);
-        }
-      }
-    }
-
-    fetchGoods()
-  }, [])
 
   const startGame = () => {
     // Code that loads game assets.
@@ -56,21 +36,22 @@ function App() {
   console.log(newGame);
 
   return (
-    <Routes>
-      <Route path="/" element={<Layout 
-        headerGoods={headerGoods}
-        newGame={newGame}
-        dispatch={dispatch}
-      />} >
-        <Route index element={<Welcome 
-          startGame={startGame}
-        />} />
-        <Route path="game" element={<GameBox /> } />
-      </Route>
+    <DataProvider>
+      <Routes>
+        <Route path="/" element={<Layout 
+          newGame={newGame}
+          dispatch={dispatch}
+          />} >
+          <Route index element={<Welcome 
+            startGame={startGame}
+            />} />
+          <Route path="game" element={<GameBox /> } />
+        </Route>
 
-      {/* <Route path="/about" element={<About />} /> */}
-      {/* <Route path="*" element={<Missing />} /> */}
-    </Routes>
+        {/* <Route path="/about" element={<About />} /> */}
+        {/* <Route path="*" element={<Missing />} /> */}
+      </Routes>
+    </DataProvider>
   );
 }
 

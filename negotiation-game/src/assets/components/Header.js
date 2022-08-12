@@ -2,12 +2,14 @@ import React from 'react';
 import GoodsBox from './GoodsBox';
 import '../scss/_Header.scss';
 import { ACTIONS } from '../../App';
+import { useContext } from 'react';
+import GoodsContext from '../../context/GoodsContext';
 
-const Header = ({ headerGoods, newGame, dispatch }) => {
-  
+const Header = ({ newGame, dispatch }) => {
+  const { headerGoods } = useContext(GoodsContext)
+
   return (
     <header className='App-header'>
-      {/* <div className="goodsBoxCtnr"> */}
         {
           headerGoods.map(item => {
             return <GoodsBox
@@ -19,7 +21,6 @@ const Header = ({ headerGoods, newGame, dispatch }) => {
             />
           })
         }
-      {/* </div> */}
       <form className="difficultyCtnr">
         <fieldset>
           <input 
