@@ -3,15 +3,14 @@ import PaidPortCtnr from './PaidPortCtnr';
 import SelectRes from './SelectRes';
 import '../scss/_NegBox.scss';
 
-const NegBox = ({id, newGame}) => {
+const NegBox = ({ id }) => {
+
   return (
     <div 
       key={id.toString()}
       className='NegBox'
     >{id}
-      <PaidPortCtnr
-        // newGame={newGame}
-      />
+      <PaidPortCtnr />
       <SelectRes />
     </div>
   )

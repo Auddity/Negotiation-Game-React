@@ -1,9 +1,13 @@
 import React from 'react'
+import { useContext } from 'react'
+import GameContext from '../../context/GameContext'
 
-const PortraitBox = ({newGame}) => {
+const PortraitBox = () => {
+  const { newNpc } = useContext(GameContext)
+
   return (
-    <div>PortraitBox
-      {/* <img src={newGame} alt="temp" /> */}
+    <div>
+      <img src={newNpc} alt="" />
     </div>
   )
 }

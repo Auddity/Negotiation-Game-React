@@ -1,5 +1,6 @@
-import { createContext, useState, useReducer } from "react";
+import { createContext, useState, useReducer, useEffect } from "react";
 import { useNavigate } from 'react-router-dom'
+import npc from '../api/npc'
 
 const GameContext = createContext({});
 
@@ -17,6 +18,8 @@ const reducer = (newGame, { type, payload }) => {
   }
 }
 
+
+
 export const GameProvider = ({ children }) => {
   const [newGame, dispatch] = useReducer(reducer, {
     difficulty: 'easy'
@@ -25,16 +28,34 @@ export const GameProvider = ({ children }) => {
   const navigate = useNavigate()
 
   const startGame = () => {
-    // Code that loads game assets.
-
     navigate('game')    
   }
 
-  console.log(newGame);
+  useEffect(() => {
+    const fetchNpc = async () => {
+      try {
+        const response = await npc.get('/api');
+        setNewNpc(response.data.results[0].picture.medium)
+      } catch(err) {
+        if(err.response) {
+          console.log(err.response.data);
+          console.log(err.response.status);
+          console.log(err.response.headers);
+        } else {
+          console.log(`Error: ${err.message}`);
+        }
+      } 
+    }
+
+    fetchNpc()
+  }, [newGame])
+
+
+  console.log(newNpc);
 
   return (
     <GameContext.Provider value={{
-      newGame, dispatch, startGame
+      newGame, dispatch, startGame, newNpc
     }} >
       {children}
     </GameContext.Provider>
