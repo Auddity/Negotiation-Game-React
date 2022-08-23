@@ -1,19 +1,21 @@
 import React from 'react';
 import NegBox from './NegBox';
+import { useContext } from 'react';
+import GameContext from '../../context/GameContext';
 import '../scss/_GameBox.scss';
 
 const GameBox = () => {
-  const negKeys = [1, 2, 3, 4, 5]
+  const { newNpc } = useContext(GameContext)
   
   return (
     <section
       className='GameBoxCtnr'
     >
       <div className="gameBox">
-        {negKeys.map(item => {
+        {newNpc.map((item, index) => {
           return <NegBox 
-            key={item}
-            id={item}
+            key={index}
+            item={item}
           />
         })}
       </div>

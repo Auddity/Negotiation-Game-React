@@ -1,10 +1,10 @@
 import React from 'react'
 
-const PortraitBox = () => {
+const PortraitBox = ({ picture }) => {
 
   return (
     <div>
-      <img src="" alt="negotiator portrait" />
+      <img src={picture} alt="negotiator portrait" />
     </div>
   )
 }

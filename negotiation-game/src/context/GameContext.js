@@ -22,7 +22,7 @@ export const GameProvider = ({ children }) => {
   const [newGame, dispatch] = useReducer(reducer, {
     difficulty: 'easy'
   });
-  const [newNpc, setNewNpc] = useState({})
+  const [newNpc, setNewNpc] = useState([])
   const navigate = useNavigate()
 
   const startGame = () => {
@@ -47,6 +47,8 @@ export const GameProvider = ({ children }) => {
 
     fetchNpc()
   }, [newGame])
+
+  // console.log(newNpc)
 
   return (
     <GameContext.Provider value={{

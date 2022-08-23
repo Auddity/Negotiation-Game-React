@@ -3,13 +3,15 @@ import PaidBox from './PaidBox';
 import PortraitBox from './PortraitBox';
 import '../scss/_PaidPortCtnr.scss';
 
-const PaidPortCtnr = () => {
+const PaidPortCtnr = ({ picture }) => {
   return (
     <div
       className='PaidPortCtnr'
     >
       <PaidBox />
-      <PortraitBox />
+      <PortraitBox 
+        picture={picture}
+      />
     </div>
   )
 }

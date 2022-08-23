@@ -3,14 +3,15 @@ import PaidPortCtnr from './PaidPortCtnr';
 import SelectRes from './SelectRes';
 import '../scss/_NegBox.scss';
 
-const NegBox = ({ id }) => {
-
+const NegBox = ({ item }) => {
+  console.log(item);
   return (
     <div 
-      key={id.toString()}
       className='NegBox'
-    >{id}
-      <PaidPortCtnr />
+    >
+      <PaidPortCtnr 
+        picture={item.picture.medium}
+      />
       <SelectRes />
     </div>
   )
