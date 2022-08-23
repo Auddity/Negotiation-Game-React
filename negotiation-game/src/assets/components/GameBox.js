@@ -10,9 +10,9 @@ const GameBox = () => {
       className='GameBoxCtnr'
     >
       <div className="gameBox">
-        {negKeys.map((item, i) => {
+        {negKeys.map(item => {
           return <NegBox 
-            key={i}
+            key={item}
             id={item}
           />
         })}

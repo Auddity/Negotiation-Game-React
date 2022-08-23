@@ -18,8 +18,6 @@ const reducer = (newGame, { type, payload }) => {
   }
 }
 
-
-
 export const GameProvider = ({ children }) => {
   const [newGame, dispatch] = useReducer(reducer, {
     difficulty: 'easy'
@@ -35,7 +33,7 @@ export const GameProvider = ({ children }) => {
     const fetchNpc = async () => {
       try {
         const response = await npc.get('/api');
-        setNewNpc(response.data.results[0].picture.medium)
+        setNewNpc(response.data.results)
       } catch(err) {
         if(err.response) {
           console.log(err.response.data);
@@ -49,9 +47,6 @@ export const GameProvider = ({ children }) => {
 
     fetchNpc()
   }, [newGame])
-
-
-  console.log(newNpc);
 
   return (
     <GameContext.Provider value={{
