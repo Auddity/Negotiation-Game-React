@@ -1,7 +1,11 @@
 .SelectRes {
-  
-  
-  background-color: aquamarine;
-  width: auto;
-  height: 5rem;
+  display: grid;
+  align-content: center;
+  text-align: center;
+  background-color: #7fffd4;
+  width: 11.5rem;
+  height: 10rem;
+  border: 1px solid rgb(128, 105, 0);
+  border-radius: 1rem;
+  cursor: pointer;
 }

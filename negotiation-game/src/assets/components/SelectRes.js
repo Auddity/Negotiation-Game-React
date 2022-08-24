@@ -3,11 +3,13 @@ import '../scss/_SelectRes.scss';
 
 const SelectRes = () => {
   return (
-    <div
+    <button
       className='SelectRes'
     >
-      SelectRes
-    </div>
+      
+        Select<br></br>Resource
+      
+    </button>
   )
 }
 

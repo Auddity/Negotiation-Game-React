@@ -12,9 +12,7 @@ function App() {
       <GameProvider>
         <Routes>
           <Route path="/" element={<Layout />} >
-            <Route index element={<Welcome 
-              // startGame={startGame}
-              />} />
+            <Route index element={<Welcome />} />
             <Route path="game" element={<GameBox /> } />
           </Route>
 

@@ -4,13 +4,12 @@ import SelectRes from './SelectRes';
 import '../scss/_NegBox.scss';
 
 const NegBox = ({ item }) => {
-  console.log(item);
   return (
     <div 
       className='NegBox'
     >
       <PaidPortCtnr 
-        picture={item.picture.medium}
+        picture={item.picture.large}
       />
       <SelectRes />
     </div>
