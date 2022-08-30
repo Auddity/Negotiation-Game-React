@@ -5,14 +5,25 @@ import npc from '../api/npc'
 const GameContext = createContext({});
 
 export const ACTIONS = {
-  SELECTED: 'selected'
+  SELECTED: 'selected',
+  TURNS: 'turns'
 }
 
 const reducer = (newGame, { type, payload }) => {
   switch(type) {
     case ACTIONS.SELECTED:
       return { ...newGame, difficulty: payload }
-     
+     case ACTIONS.TURNS:
+      if(newGame.difficulty === 'easy') {
+        return { ...newGame, turns: 3 }
+      }
+      if(newGame.difficulty === 'medium') {
+        return { ...newGame, turns: 3 }
+      }
+      if(newGame.difficulty === 'hard') {
+        return { ...newGame, turns: 4 }
+      }
+      return
       
     default:
   }
@@ -26,7 +37,8 @@ export const GameProvider = ({ children }) => {
   const navigate = useNavigate()
 
   const startGame = () => {
-    navigate('game')    
+    dispatch({ type: ACTIONS.TURNS })
+    navigate('game')
   }
 
   useEffect(() => {
@@ -48,7 +60,7 @@ export const GameProvider = ({ children }) => {
     fetchNpc()
   }, [newGame])
 
-  // console.log(newNpc)
+  // console.log(newGame)
 
   return (
     <GameContext.Provider value={{

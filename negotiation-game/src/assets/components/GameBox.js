@@ -6,6 +6,11 @@ import '../scss/_GameBox.scss';
 
 const GameBox = () => {
   const { newNpc } = useContext(GameContext)
+
+  const handleClick = e => {
+    
+    console.log('clicked', e.target.id);
+  }
   
   return (
     <section
@@ -16,6 +21,7 @@ const GameBox = () => {
           return <NegBox 
             key={index}
             item={item}
+            handleClick={handleClick}
           />
         })}
       </div>

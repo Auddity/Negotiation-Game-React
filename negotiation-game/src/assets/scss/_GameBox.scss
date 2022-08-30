@@ -2,6 +2,9 @@
   display: grid;
   place-content: center;
   height: calc(100vh - 24rem);
+  @media screen and (min-width: 946px) {
+    margin-block-start: 7rem;
+  }
 
   .gameBox {
     
@@ -10,9 +13,6 @@
 
     background-color: lightblue;
 
-    @media screen and (min-width: 946px) {
-      margin-block-start: 12rem;
-    }
   }
 
 }

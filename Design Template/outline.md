@@ -3,12 +3,12 @@ Based on Forge Of Empires mini game.
 
 # Landing Page
 ~~- A Title Welcoming player to game.~~
-- A Custom Radio to select difficulty.
+~~- A Custom Radio to select difficulty.~~
 - A Button to Start Game.
   ## Button Action
     - Depending on Radio input selection game parameters are loaded [Difficulty Setting](#difficulty-setting)
-    - Brings up [Game Container](#outer-container)
-    - Negotiators Portraits from API [On Game Start](#on-game-start)
+    ~~- Brings up [Game Container](#outer-container)~~
+    ~~- Negotiators Portraits from API [On Game Start](#on-game-start)~~
 - Possibly a Header with a horizontal list of goods and starting quantity.
 
 # Game Displays UI
@@ -20,7 +20,7 @@ Based on Forge Of Empires mini game.
   - Also inside as a **PayButton**
 
 2) Also in this Outer Container is a **Pay & Negotiate Button**
-  - Upon first load the button is *Grayed Out*
+  ~~- Upon first load the button is *Grayed Out*~~
   - Is colored in once ALL five Offers have been selected [Offer Buttons Action](#offer-button-action)
   ### P&N Button Action:
   When Clicked:
