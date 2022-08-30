@@ -6,8 +6,7 @@ const GoodsContext = createContext({});
 export const GoodsProvider = ({ children }) => {
   // Place state and handle funcitons here
   const [headerGoods, setHeaderGoods] = useState([])
-  // const [negGoods, setNegGoods] = useState([])
-
+  
   useEffect(() => {
     const fetchGoods = async () => {
       try {

@@ -6,27 +6,49 @@ const GameContext = createContext({});
 
 export const ACTIONS = {
   SELECTED: 'selected',
-  TURNS: 'turns'
+  TURNS: 'turns',
+  NEG_GOODS: 'neg-goods'
 }
 
 const reducer = (newGame, { type, payload }) => {
+  const diff = newGame.difficulty;
+  
   switch(type) {
     case ACTIONS.SELECTED:
       return { ...newGame, difficulty: payload }
      case ACTIONS.TURNS:
-      if(newGame.difficulty === 'easy') {
+      if(diff === 'easy') {
         return { ...newGame, turns: 3 }
       }
-      if(newGame.difficulty === 'medium') {
+      if(diff === 'moderate') {
         return { ...newGame, turns: 3 }
       }
-      if(newGame.difficulty === 'hard') {
+      if(diff === 'difficult') {
         return { ...newGame, turns: 4 }
+      }
+      return
+    case ACTIONS.NEG_GOODS:
+      if(diff === 'easy') {
+        difficultyRandomValues(3, 4)
+        console.log(3, 4)
+      }
+      if(diff === 'moderate') {
+        difficultyRandomValues(5, 6)
+        console.log(5, 6)
+      }
+      if(diff === 'difficult') {
+        difficultyRandomValues(7, 10)
+        console.log(7, 10)
+
       }
       return
       
     default:
   }
+}
+
+const difficultyRandomValues = (min, max) => {
+  return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 export const GameProvider = ({ children }) => {
@@ -38,6 +60,7 @@ export const GameProvider = ({ children }) => {
 
   const startGame = () => {
     dispatch({ type: ACTIONS.TURNS })
+    dispatch({ type: ACTIONS.NEG_GOODS })
     navigate('game')
   }
 

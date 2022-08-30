@@ -8,7 +8,6 @@ import GoodsContext from '../../context/GoodsContext';
 const Header = () => {
   const { headerGoods } = useContext(GoodsContext)
   const { newGame, dispatch } = useContext(GameContext)
-  console.log(newGame);
   return (
     <header className='App-header'>
         {
@@ -35,21 +34,21 @@ const Header = () => {
 
           <input 
             type="radio" 
-            name="medium" 
-            id="medium"
-            value="medium" 
-            checked={newGame.difficulty === "medium"} 
+            name="moderate" 
+            id="moderate"
+            value="moderate" 
+            checked={newGame.difficulty === "moderate"} 
             onChange={e => dispatch({ type: ACTIONS.SELECTED, payload: e.target.value})}/>
-          <label htmlFor="medium">Medium</label>
+          <label htmlFor="moderate">Moderate</label>
           
           <input 
             type="radio" 
-            name="hard" 
-            id="hard"
-            value="hard" 
-            checked={newGame.difficulty === "hard"}
+            name="difficult" 
+            id="difficult"
+            value="difficult" 
+            checked={newGame.difficulty === "difficult"}
             onChange={e => dispatch({ type: ACTIONS.SELECTED, payload: e.target.value })}/>
-          <label htmlFor="hard">Hard</label>
+          <label htmlFor="difficult">Difficult</label>
         </fieldset>
       </form>
     </header>
