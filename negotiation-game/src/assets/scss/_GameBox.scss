@@ -9,5 +9,10 @@
     flex-direction: column;
 
     background-color: lightblue;
+
+    @media screen and (min-width: 946px) {
+      margin-block-start: 12rem;
+    }
   }
+
 }
