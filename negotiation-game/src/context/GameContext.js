@@ -1,6 +1,7 @@
 import { createContext, useState, useReducer, useEffect } from "react";
 import { useNavigate } from 'react-router-dom'
 import npc from '../api/npc'
+import goods from '../api/goods'
 
 const GameContext = createContext({});
 
@@ -11,34 +12,34 @@ export const ACTIONS = {
 }
 
 const reducer = (newGame, { type, payload }) => {
-  const diff = newGame.difficulty;
+  // const diff = newGame.difficulty;
   
   switch(type) {
     case ACTIONS.SELECTED:
       return { ...newGame, difficulty: payload }
-     case ACTIONS.TURNS:
-      if(diff === 'easy') {
+    case ACTIONS.TURNS:
+      if(newGame.difficulty === 'easy') {
         return { ...newGame, turns: 3 }
       }
-      if(diff === 'moderate') {
+      if(newGame.difficulty === 'moderate') {
         return { ...newGame, turns: 3 }
       }
-      if(diff === 'difficult') {
+      if(newGame.difficulty === 'difficult') {
         return { ...newGame, turns: 4 }
       }
       return
     case ACTIONS.NEG_GOODS:
-      if(diff === 'easy') {
-        difficultyRandomValues(3, 4)
-        console.log(3, 4)
+      if(newGame.difficulty === 'easy') {
+        // getRandomNumOfGoods(payload, difficultyRandomValues(2, 4))
+        return { ...newGame, gameGoods: getRandomNumOfGoods(payload, difficultyRandomValues(2, 4)) }
       }
-      if(diff === 'moderate') {
-        difficultyRandomValues(5, 6)
-        console.log(5, 6)
+      if(newGame.difficulty === 'moderate') {
+        // difficultyRandomValues(5, 6)
+        // console.log(5, 6)
       }
-      if(diff === 'difficult') {
-        difficultyRandomValues(7, 10)
-        console.log(7, 10)
+      if(newGame.difficulty === 'difficult') {
+        // difficultyRandomValues(7, 10)
+        // console.log(7, 10)
 
       }
       return
@@ -51,16 +52,31 @@ const difficultyRandomValues = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
+// Found this algorithm for getting random items from an array on stackoverflow
+// https://stackoverflow.com/questions/19269545/how-to-get-a-number-of-random-elements-from-an-array
+const getRandomNumOfGoods = (arr, n) => {
+  let result = new Array(n),
+      len = arr.length, 
+      taken = new Array(len);
+  while(n--) {
+    var x = Math.floor(Math.random() * len)
+    result[n] = arr[x in taken ? taken[x] : x]
+    taken[x] = --len in taken ? taken[len] : len;
+  }
+  return result
+}
+
 export const GameProvider = ({ children }) => {
   const [newGame, dispatch] = useReducer(reducer, {
     difficulty: 'easy'
   });
   const [newNpc, setNewNpc] = useState([])
+  const [gameGoods, setGameGoods] = useState([])
   const navigate = useNavigate()
 
   const startGame = () => {
     dispatch({ type: ACTIONS.TURNS })
-    dispatch({ type: ACTIONS.NEG_GOODS })
+    dispatch({ type: ACTIONS.NEG_GOODS, payload: gameGoods })
     navigate('game')
   }
 
@@ -80,10 +96,24 @@ export const GameProvider = ({ children }) => {
       } 
     }
 
+    const fetchNegGoods = async () => {
+      try {
+        const response = await goods.get('/goods');
+        setGameGoods(response.data);
+      } catch(err) {
+        if(err.response) {
+          console.log(err.response.data);
+          console.log(err.response.status);
+          console.log(err.response.headers);
+        } else {
+          console.log(`Error: ${err.message}`);
+        }
+      } 
+    }
+
+    fetchNegGoods()
     fetchNpc()
   }, [newGame])
-
-  // console.log(newGame)
 
   return (
     <GameContext.Provider value={{

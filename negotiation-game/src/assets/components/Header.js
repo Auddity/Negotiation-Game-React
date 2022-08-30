@@ -8,6 +8,7 @@ import GoodsContext from '../../context/GoodsContext';
 const Header = () => {
   const { headerGoods } = useContext(GoodsContext)
   const { newGame, dispatch } = useContext(GameContext)
+  console.log(newGame);
   return (
     <header className='App-header'>
         {
