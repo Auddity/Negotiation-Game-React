@@ -85,7 +85,7 @@ This Operation is Repeated Until the Turns run out. **IF** not successful a moda
 - Easy 
   ~~- 3 Turns~~
   - 2-3 Good Cost
-  - Get 3-4 Random goods from pool
+  ~~- Get 3-4 Random goods from pool~~
 - Moderate 
   ~~- 3 Turns~~
   - 4-5 Good Cost

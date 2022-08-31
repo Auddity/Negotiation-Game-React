@@ -30,17 +30,13 @@ const reducer = (newGame, { type, payload }) => {
       return
     case ACTIONS.NEG_GOODS:
       if(newGame.difficulty === 'easy') {
-        // getRandomNumOfGoods(payload, difficultyRandomValues(2, 4))
         return { ...newGame, gameGoods: getRandomNumOfGoods(payload, difficultyRandomValues(2, 4)) }
       }
       if(newGame.difficulty === 'moderate') {
-        // difficultyRandomValues(5, 6)
-        // console.log(5, 6)
+        return { ...newGame, gameGoods: getRandomNumOfGoods(payload, difficultyRandomValues(5, 6))}
       }
       if(newGame.difficulty === 'difficult') {
-        // difficultyRandomValues(7, 10)
-        // console.log(7, 10)
-
+        return { ...newGame, gameGoods: getRandomNumOfGoods(payload, difficultyRandomValues(7, 10))}
       }
       return
       
