@@ -29,14 +29,8 @@ const GameBox = () => {
       </div>
 
       {/* Select Good to Pay Modal */}
-      {gameGoods.map(good => {
-        return <GoodsPayModal 
-          key={good.id}
-          image={good.image}
-          quantity={good.quantity}
-          name={good.name}
-        />
-      })}
+       <GoodsPayModal gameGoods={gameGoods} />
+      
     </section>
   )
 }

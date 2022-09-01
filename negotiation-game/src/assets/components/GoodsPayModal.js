@@ -1,10 +1,19 @@
 import React from 'react'
+import '../scss/_GoodsPayModal.scss'
 
-const GoodsPayModal = ({ image, quantity, name }) => {
-  console.log(image, quantity, name);
+const GoodsPayModal = ({ gameGoods }) => {
   return (
-    <div>
-      Good
+    
+    <div className="goodsPayModalCtnr">
+      {gameGoods.map(good => {
+        return <button key={good.id} className="good">
+          <img className="goodImage" src={good.image} alt={good.name} />
+          <div className="goodDetails">
+            <span className='name'>{good.name}</span>
+            <span className="quantity">{good.quantity}/250</span>
+          </div>
+        </button>
+      })}
     </div>
   )
 }

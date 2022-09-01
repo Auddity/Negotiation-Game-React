@@ -1,4 +1,5 @@
 .GameBoxCtnr {
+  position: relative;
   display: grid;
   place-content: center;
   height: calc(100vh - 24rem);

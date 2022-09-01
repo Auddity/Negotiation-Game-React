@@ -1,0 +1,47 @@
+.goodsPayModalCtnr {
+  position: absolute;
+  top: 20%;
+  right: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  height: auto;
+  width: auto;
+  background-color: orange;
+  font-size: 1.3rem;
+  padding: 1rem;
+  border: 1px solid black;
+  border-radius: 1rem;
+  z-index: 5;
+  &::before {
+    position: inherit;
+    inset: 0;
+    background-color: rgba($color: #000000, $alpha: 0.5);
+    z-index: 1;
+  }
+
+  .good {
+    width: 14rem;
+    height: 14rem;
+    background-color: aliceblue;
+    border: 1px solid black;
+    border-radius: 1rem;
+    overflow: hidden;
+
+    .goodImage {
+      width: 100%;
+      height: 83%;
+      object-fit: cover;
+      margin-block-start: -.5rem;
+    }
+
+    .goodDetails {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-inline: .5rem;
+      z-index: 1;
+    }
+  }
+}
