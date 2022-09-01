@@ -3,11 +3,12 @@ import PaidPortCtnr from './PaidPortCtnr';
 import SelectRes from './SelectRes';
 import '../scss/_NegBox.scss';
 
-const NegBox = ({ item, handleClick }) => {
+const NegBox = ({ item, id, handleClick }) => {
   
   return (
     <div 
       className='NegBox'
+      id={id}
     >
       <PaidPortCtnr 
         picture={item.picture.large}

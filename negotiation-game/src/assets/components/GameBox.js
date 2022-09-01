@@ -5,11 +5,12 @@ import GameContext from '../../context/GameContext';
 import '../scss/_GameBox.scss';
 
 const GameBox = () => {
-  const { newNpc } = useContext(GameContext)
+  const { newNpc, newGame } = useContext(GameContext)
 
+  console.log(newGame);
   const handleClick = e => {
     
-    console.log('clicked', e.target.id);
+    console.log('clicked', e.target.parentElement.id);
   }
   
   return (
@@ -20,6 +21,7 @@ const GameBox = () => {
         {newNpc.map((item, index) => {
           return <NegBox 
             key={index}
+            id={index}
             item={item}
             handleClick={handleClick}
           />

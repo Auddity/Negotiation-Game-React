@@ -4,7 +4,6 @@ import api from '../api/goods';
 const GoodsContext = createContext({});
 
 export const GoodsProvider = ({ children }) => {
-  // Place state and handle funcitons here
   const [headerGoods, setHeaderGoods] = useState([])
   
   useEffect(() => {

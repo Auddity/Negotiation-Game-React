@@ -113,7 +113,7 @@ export const GameProvider = ({ children }) => {
 
   return (
     <GameContext.Provider value={{
-      newGame, dispatch, startGame, newNpc
+      newGame, dispatch, startGame, newNpc, gameGoods
     }} >
       {children}
     </GameContext.Provider>
