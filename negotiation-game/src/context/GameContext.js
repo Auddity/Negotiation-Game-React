@@ -12,30 +12,30 @@ export const ACTIONS = {
 }
 
 const reducer = (newGame, { type, payload }) => {
-  // const diff = newGame.difficulty;
+  const diff = newGame.difficulty;
   
   switch(type) {
     case ACTIONS.SELECTED:
       return { ...newGame, difficulty: payload }
     case ACTIONS.TURNS:
-      if(newGame.difficulty === 'easy') {
+      if(diff === 'easy') {
         return { ...newGame, turns: 3 }
       }
-      if(newGame.difficulty === 'moderate') {
+      if(diff === 'moderate') {
         return { ...newGame, turns: 3 }
       }
-      if(newGame.difficulty === 'difficult') {
+      if(diff === 'difficult') {
         return { ...newGame, turns: 4 }
       }
       return
     case ACTIONS.NEG_GOODS:
-      if(newGame.difficulty === 'easy') {
+      if(diff === 'easy') {
         return { ...newGame, gameGoods: getRandomNumOfGoods(payload, difficultyRandomValues(2, 4)) }
       }
-      if(newGame.difficulty === 'moderate') {
+      if(diff === 'moderate') {
         return { ...newGame, gameGoods: getRandomNumOfGoods(payload, difficultyRandomValues(5, 6))}
       }
-      if(newGame.difficulty === 'difficult') {
+      if(diff === 'difficult') {
         return { ...newGame, gameGoods: getRandomNumOfGoods(payload, difficultyRandomValues(7, 10))}
       }
       return

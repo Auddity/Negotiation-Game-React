@@ -1,16 +1,16 @@
 import React from 'react';
 import NegBox from './NegBox';
+import GoodsPayModal from './GoodsPayModal';
 import { useContext } from 'react';
 import GameContext from '../../context/GameContext';
 import '../scss/_GameBox.scss';
 
 const GameBox = () => {
   const { newNpc, newGame } = useContext(GameContext)
+  const { gameGoods } = newGame
 
-  console.log(newGame);
   const handleClick = e => {
     
-    console.log('clicked', e.target.parentElement.id);
   }
   
   return (
@@ -27,6 +27,16 @@ const GameBox = () => {
           />
         })}
       </div>
+
+      {/* Select Good to Pay Modal */}
+      {gameGoods.map(good => {
+        return <GoodsPayModal 
+          key={good.id}
+          image={good.image}
+          quantity={good.quantity}
+          name={good.name}
+        />
+      })}
     </section>
   )
 }
