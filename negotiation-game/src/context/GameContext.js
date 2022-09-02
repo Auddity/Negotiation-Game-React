@@ -30,7 +30,7 @@ const reducer = (newGame, { type, payload }) => {
       return
     case ACTIONS.NEG_GOODS:
       if(diff === 'easy') {
-        return { ...newGame, gameGoods: getRandomNumOfGoods(payload, difficultyRandomValues(2, 4)) }
+        return { ...newGame, gameGoods: getRandomNumOfGoods(payload, difficultyRandomValues(3, 4)) }
       }
       if(diff === 'moderate') {
         return { ...newGame, gameGoods: getRandomNumOfGoods(payload, difficultyRandomValues(5, 6))}

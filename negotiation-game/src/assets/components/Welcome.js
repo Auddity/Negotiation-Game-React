@@ -5,6 +5,7 @@ import GameProvider from '../../context/GameContext'
 
 const Welcome = () => {
   const { startGame } = useContext(GameProvider);
+  
 
   return (
     <main className='Welcome'>

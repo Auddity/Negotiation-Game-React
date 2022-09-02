@@ -1,12 +1,11 @@
 import React from 'react';
 import '../scss/_SelectRes.scss';
 
-const SelectRes = ({ handleClick }) => {
-  // console.log(index);
+const SelectRes = ({ handleModal }) => {
   return (
     <button
       className='SelectRes'
-      onClick={handleClick}
+      onClick={handleModal}
     >
       
         Select<br></br>Resource
