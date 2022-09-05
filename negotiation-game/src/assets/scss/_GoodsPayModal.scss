@@ -1,13 +1,14 @@
 .goodsPayModalCtnr {
   position: absolute;
-  top: 20%;
-  right: 20%;
+  top: 3rem;
+  left: 10rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex-wrap: wrap;
   gap: 1rem;
-  height: auto;
-  width: auto;
+  max-height: 70rem;
+  max-width: 28rem;
   background-color: orange;
   font-size: 1.3rem;
   padding: 1rem;
@@ -16,14 +17,13 @@
   z-index: 10;
 
   .good {
-    width: 14rem;
-    height: 14rem;
+    width: 12rem;
+    height: 12rem;
     background-color: aliceblue;
     border: 1px solid black;
     border-radius: 1rem;
     overflow: hidden;
     cursor: pointer;
-    z-index: inherit;
 
     &Image {
       width: 100%;
