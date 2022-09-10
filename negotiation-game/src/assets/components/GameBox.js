@@ -6,9 +6,9 @@ import GameContext from '../../context/GameContext';
 import '../scss/_GameBox.scss';
 
 const GameBox = () => {
-  const { newNpc, newGame } = useContext(GameContext)
+  const { newNpc, game } = useContext(GameContext)
   const [ modal, setModal ] = useState(false)
-  const { gameGoods } = newGame
+  const { gameGoods } = game
 
   const handleModal = e => {
     console.log(e.target);

@@ -7,7 +7,7 @@ import GoodsContext from '../../context/GoodsContext';
 
 const Header = () => {
   const { headerGoods } = useContext(GoodsContext)
-  const { newGame, dispatch } = useContext(GameContext)
+  const { game, dispatch } = useContext(GameContext)
   return (
     <header className='App-header'>
         {
@@ -28,7 +28,7 @@ const Header = () => {
             name="easy" 
             id="easy"
             value="easy"
-            checked={newGame.difficulty === "easy"} 
+            checked={game.difficulty === "easy"} 
             onChange={e => dispatch({ type: ACTIONS.SELECTED, payload: e.target.value })}/>
           <label htmlFor="easy">Easy</label>
 
@@ -37,7 +37,7 @@ const Header = () => {
             name="moderate" 
             id="moderate"
             value="moderate" 
-            checked={newGame.difficulty === "moderate"} 
+            checked={game.difficulty === "moderate"} 
             onChange={e => dispatch({ type: ACTIONS.SELECTED, payload: e.target.value})}/>
           <label htmlFor="moderate">Moderate</label>
           
@@ -46,7 +46,7 @@ const Header = () => {
             name="difficult" 
             id="difficult"
             value="difficult" 
-            checked={newGame.difficulty === "difficult"}
+            checked={game.difficulty === "difficult"}
             onChange={e => dispatch({ type: ACTIONS.SELECTED, payload: e.target.value })}/>
           <label htmlFor="difficult">Difficult</label>
         </fieldset>

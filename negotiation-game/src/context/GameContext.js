@@ -6,47 +6,49 @@ import goods from '../api/goods'
 const GameContext = createContext({});
 
 export const ACTIONS = {
-  IS_NEW: 'is-new',
   SELECTED: 'selected',
   TURNS: 'turns',
-  NEG_GOODS: 'neg-goods'
+  GAME_GOODS: 'game-goods',
+  ASSIGN_GAME_GOODS: 'assign-game-goods'
 }
 
-const reducer = (newGame, { type, payload }) => {
-  const diff = newGame.difficulty;
+const reducer = (game, { type, payload }) => {
+  const diff = game.difficulty;
   
   switch(type) {
-    case ACTIONS.IS_NEW: 
-      return { ...newGame, isNew: true }
     case ACTIONS.SELECTED:
-      return { ...newGame, difficulty: payload }
+      return { ...game, difficulty: payload }
     case ACTIONS.TURNS:
       if(diff === 'easy') {
-        return { ...newGame, turns: 3 }
+        return { ...game, turns: 3 }
       }
       if(diff === 'moderate') {
-        return { ...newGame, turns: 3 }
+        return { ...game, turns: 3 }
       }
       if(diff === 'difficult') {
-        return { ...newGame, turns: 4 }
+        return { ...game, turns: 4 }
       }
       return
-    case ACTIONS.NEG_GOODS:
+    case ACTIONS.GAME_GOODS:
       if(diff === 'easy') {
-        return { ...newGame, gameGoods: getRandomNumOfGoods(payload, difficultyRandomValues(3, 4)) }
+        return { ...game, gameGoods: getRandomNumOfGoods(payload, difficultyRandomValues(3, 4)) }
       }
       if(diff === 'moderate') {
-        return { ...newGame, gameGoods: getRandomNumOfGoods(payload, difficultyRandomValues(5, 6))}
+        return { ...game, gameGoods: getRandomNumOfGoods(payload, difficultyRandomValues(5, 6))}
       }
       if(diff === 'difficult') {
-        return { ...newGame, gameGoods: getRandomNumOfGoods(payload, difficultyRandomValues(7, 10))}
+        return { ...game, gameGoods: getRandomNumOfGoods(payload, difficultyRandomValues(7, 10))}
       }
+      return
+      //assigning game goods (working)
+    case ACTIONS.ASSIGN_GAME_GOODS:
       return
       
     default:
   }
 }
 
+// Determine random values for goods used in each new game.
 const difficultyRandomValues = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
@@ -66,21 +68,23 @@ const getRandomNumOfGoods = (arr, n) => {
 }
 
 export const GameProvider = ({ children }) => {
-  const [newGame, dispatch] = useReducer(reducer, {
-    isNew: false,
+  const [game, dispatch] = useReducer(reducer, {
     difficulty: 'easy'
   });
   const [newNpc, setNewNpc] = useState([])
   const [gameGoods, setGameGoods] = useState([])
+  const [isNew, setIsNew] = useState(false)
   const navigate = useNavigate()
 
   const startGame = () => {
-    dispatch({ type: ACTIONS.IS_NEW })
+    setIsNew(prev => prev = !prev)
     dispatch({ type: ACTIONS.TURNS })
-    dispatch({ type: ACTIONS.NEG_GOODS, payload: gameGoods })
+    dispatch({ type: ACTIONS.GAME_GOODS, payload: gameGoods })
+
     navigate('game')
   }
 
+  // Fetch assets for new game
   useEffect(() => {
     const fetchNpc = async () => {
       try {
@@ -114,13 +118,13 @@ export const GameProvider = ({ children }) => {
 
     fetchNegGoods()
     fetchNpc()
-  }, [newGame.isNew])
+  }, [isNew])
 
-  console.log(newGame);
-
+  console.log(isNew);
+  
   return (
     <GameContext.Provider value={{
-      newGame, dispatch, startGame, newNpc, gameGoods
+      game, dispatch, startGame, newNpc, gameGoods
     }} >
       {children}
     </GameContext.Provider>
