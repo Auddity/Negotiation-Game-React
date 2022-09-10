@@ -6,6 +6,7 @@ import goods from '../api/goods'
 const GameContext = createContext({});
 
 export const ACTIONS = {
+  IS_NEW: 'is-new',
   SELECTED: 'selected',
   TURNS: 'turns',
   NEG_GOODS: 'neg-goods'
@@ -15,6 +16,8 @@ const reducer = (newGame, { type, payload }) => {
   const diff = newGame.difficulty;
   
   switch(type) {
+    case ACTIONS.IS_NEW: 
+      return { ...newGame, isNew: true }
     case ACTIONS.SELECTED:
       return { ...newGame, difficulty: payload }
     case ACTIONS.TURNS:
@@ -64,6 +67,7 @@ const getRandomNumOfGoods = (arr, n) => {
 
 export const GameProvider = ({ children }) => {
   const [newGame, dispatch] = useReducer(reducer, {
+    isNew: false,
     difficulty: 'easy'
   });
   const [newNpc, setNewNpc] = useState([])
@@ -71,6 +75,7 @@ export const GameProvider = ({ children }) => {
   const navigate = useNavigate()
 
   const startGame = () => {
+    dispatch({ type: ACTIONS.IS_NEW })
     dispatch({ type: ACTIONS.TURNS })
     dispatch({ type: ACTIONS.NEG_GOODS, payload: gameGoods })
     navigate('game')
@@ -109,7 +114,9 @@ export const GameProvider = ({ children }) => {
 
     fetchNegGoods()
     fetchNpc()
-  }, [newGame])
+  }, [newGame.isNew])
+
+  console.log(newGame);
 
   return (
     <GameContext.Provider value={{

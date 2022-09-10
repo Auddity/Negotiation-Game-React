@@ -10,8 +10,6 @@ const GameBox = () => {
   const [ modal, setModal ] = useState(false)
   const { gameGoods } = newGame
 
-  console.log(modal);
-
   const handleModal = e => {
     console.log(e.target);
     setModal(prev => prev = !prev)

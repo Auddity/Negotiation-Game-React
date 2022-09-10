@@ -74,10 +74,10 @@ This Operation is Repeated Until the Turns run out. **IF** not successful a moda
 
 ## Initial Needs
 - A main pool of at least 10 Goods
-- API for portraits.
+~~- API for portraits.~~
 
 ## On Game Start
-- Get 5 portraits from API to display
+~~- Get 5 portraits from API to display~~
 - Grab number of goods from pool (depending on difficulty)
   - Assign 1 good from this 'game' pool to each negotiator(portrait)
 
