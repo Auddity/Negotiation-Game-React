@@ -2,8 +2,6 @@ import React from 'react'
 import '../scss/_GoodsPayModal.scss'
 
 const GoodsPayModal = ({ gameGoods, handleAssignment }) => {
-
-
   return (
     <div className="goodsPayModalCtnr">
       {gameGoods.map(good => {

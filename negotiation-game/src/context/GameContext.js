@@ -1,4 +1,4 @@
-import { createContext, useState, useReducer, useEffect } from "react";
+import { createContext, useReducer, useEffect } from "react";
 import { useNavigate } from 'react-router-dom'
 import npc from '../api/npc'
 import goods from '../api/goods'
@@ -34,6 +34,7 @@ const reducer = (game, { type, payload }) => {
       }
       return
     case ACTIONS.GAME_NPCS:
+      console.log('dispatched')
       return { ...game, gameNpcs: payload}
     case ACTIONS.GAME_GOODS:
       if(diff === 'easy') {
@@ -90,7 +91,7 @@ export const GameProvider = ({ children }) => {
 
   // Fetch assets for new game
   useEffect(() => {
-    const fetchGameData = async () => {
+    const fetchGameAssets = async () => {
       try {
         const npcRes = await npc.get('/api');
         const goodsRes = await goods.get('/goods')
@@ -106,9 +107,10 @@ export const GameProvider = ({ children }) => {
         }
       }
     }
-    fetchGameData();
-    console.log('ran ran')
+    fetchGameAssets();
+    console.log('useEffect')
   }, [isNew])
+  console.log(isNew)
   
   return (
     <GameContext.Provider value={{
