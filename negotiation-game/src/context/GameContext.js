@@ -6,7 +6,6 @@ import goods from '../api/goods'
 const GameContext = createContext({});
 
 export const ACTIONS = {
-  IS_NEW: 'is-new',
   SELECTED: 'selected',
   TURNS: 'turns',
   GAME_NPCS: 'game-npcs',
@@ -18,8 +17,6 @@ const reducer = (game, { type, payload }) => {
   const diff = game.difficulty;
   
   switch(type) {
-    case ACTIONS.IS_NEW:
-      return { ...game, isNew: payload}
     case ACTIONS.SELECTED:
       return { ...game, difficulty: payload }
     case ACTIONS.TURNS:
@@ -77,19 +74,18 @@ const getRandomNumOfGoods = (arr, n) => {
 
 export const GameProvider = ({ children }) => {
   const [game, dispatch] = useReducer(reducer, {
-    isNew: false,
     difficulty: 'easy'
   });
-  const { isNew, difficulty, gameNpcs, gameGoods } = game;
+  const { difficulty, gameNpcs, gameGoods } = game;
   const navigate = useNavigate()
 
   const startGame = () => {
-    dispatch({ type: ACTIONS.IS_NEW, payload: true})
     dispatch({ type: ACTIONS.TURNS })
     navigate('game')
   }
 
   // Fetch assets for new game
+  // This is called twice, is it because of two States being updated in the Hook despite the dependancy?
   useEffect(() => {
     const fetchGameAssets = async () => {
       try {
@@ -109,8 +105,8 @@ export const GameProvider = ({ children }) => {
     }
     fetchGameAssets();
     console.log('useEffect')
-  }, [isNew])
-  console.log(isNew)
+  }, [dispatch])
+  
   
   return (
     <GameContext.Provider value={{

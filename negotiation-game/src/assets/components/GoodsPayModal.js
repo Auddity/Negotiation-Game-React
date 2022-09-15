@@ -5,7 +5,6 @@ const GoodsPayModal = ({ gameGoods, handleAssignment }) => {
   return (
     <div className="goodsPayModalCtnr">
       {gameGoods.map(good => {
-        console.log(good.id)
         return <button 
             className="good"
             key={good.id} 

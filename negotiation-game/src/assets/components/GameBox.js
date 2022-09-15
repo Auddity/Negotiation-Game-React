@@ -1,7 +1,7 @@
 import React from 'react';
 import NegBox from './NegBox';
 import GoodsPayModal from './GoodsPayModal';
-import { useContext, useState } from 'react';
+import { useContext, useState} from 'react';
 import GameContext from '../../context/GameContext';
 import '../scss/_GameBox.scss';
 

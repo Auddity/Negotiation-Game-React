@@ -9,6 +9,7 @@ const NegBox = ({ item, id, handleModal }) => {
     <div 
       className='NegBox'
       id={id}
+      
     >
       <PaidPortCtnr 
         picture={item.picture.large}
