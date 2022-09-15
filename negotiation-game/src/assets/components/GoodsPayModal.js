@@ -2,12 +2,16 @@ import React from 'react'
 import '../scss/_GoodsPayModal.scss'
 
 const GoodsPayModal = ({ gameGoods, handleAssignment }) => {
+
+
   return (
     <div className="goodsPayModalCtnr">
       {gameGoods.map(good => {
+        console.log(good.id)
         return <button 
             className="good"
             key={good.id} 
+            data-good-id={good.id}
             onClick={handleAssignment}
           >
           <img className="goodImage" src={good.image} alt={good.name} />

@@ -6,9 +6,10 @@ import GameContext from '../../context/GameContext';
 import '../scss/_GameBox.scss';
 
 const GameBox = () => {
-  const { newNpc, game } = useContext(GameContext)
+  const { gameNpcs, gameGoods } = useContext(GameContext)
   const [ modal, setModal ] = useState(false)
-  const { gameGoods } = game
+  // const { gameGoods } = game
+  console.log(gameGoods)
 
   const handleModal = e => {
     console.log(e.target);
@@ -24,7 +25,7 @@ const GameBox = () => {
       className={modal ? 'GameBoxCtnr modalActive' : 'GameBoxCtnr'}
     >
       <div className="gameBox">
-        {newNpc.map((item, index) => {
+        {gameNpcs.map((item, index) => {
           return <NegBox 
             key={index}
             id={index}

@@ -6,8 +6,10 @@ import goods from '../api/goods'
 const GameContext = createContext({});
 
 export const ACTIONS = {
+  IS_NEW: 'is-new',
   SELECTED: 'selected',
   TURNS: 'turns',
+  GAME_NPCS: 'game-npcs',
   GAME_GOODS: 'game-goods',
   ASSIGN_GAME_GOODS: 'assign-game-goods'
 }
@@ -16,6 +18,8 @@ const reducer = (game, { type, payload }) => {
   const diff = game.difficulty;
   
   switch(type) {
+    case ACTIONS.IS_NEW:
+      return { ...game, isNew: payload}
     case ACTIONS.SELECTED:
       return { ...game, difficulty: payload }
     case ACTIONS.TURNS:
@@ -29,6 +33,8 @@ const reducer = (game, { type, payload }) => {
         return { ...game, turns: 4 }
       }
       return
+    case ACTIONS.GAME_NPCS:
+      return { ...game, gameNpcs: payload}
     case ACTIONS.GAME_GOODS:
       if(diff === 'easy') {
         return { ...game, gameGoods: getRandomNumOfGoods(payload, difficultyRandomValues(3, 4)) }
@@ -39,6 +45,7 @@ const reducer = (game, { type, payload }) => {
       if(diff === 'difficult') {
         return { ...game, gameGoods: getRandomNumOfGoods(payload, difficultyRandomValues(7, 10))}
       }
+      console.log(game.gameGoods)
       return
       //assigning game goods (working)
     case ACTIONS.ASSIGN_GAME_GOODS:
@@ -69,27 +76,26 @@ const getRandomNumOfGoods = (arr, n) => {
 
 export const GameProvider = ({ children }) => {
   const [game, dispatch] = useReducer(reducer, {
+    isNew: false,
     difficulty: 'easy'
   });
-  const [newNpc, setNewNpc] = useState([])
-  const [gameGoods, setGameGoods] = useState([])
-  const [isNew, setIsNew] = useState(false)
+  const { isNew, difficulty, gameNpcs, gameGoods } = game;
   const navigate = useNavigate()
 
   const startGame = () => {
-    setIsNew(prev => prev = !prev)
+    dispatch({ type: ACTIONS.IS_NEW, payload: true})
     dispatch({ type: ACTIONS.TURNS })
-    dispatch({ type: ACTIONS.GAME_GOODS, payload: gameGoods })
-
     navigate('game')
   }
 
   // Fetch assets for new game
   useEffect(() => {
-    const fetchNpc = async () => {
+    const fetchGameData = async () => {
       try {
-        const response = await npc.get('/api');
-        setNewNpc(response.data.results)
+        const npcRes = await npc.get('/api');
+        const goodsRes = await goods.get('/goods')
+        dispatch({ type: ACTIONS.GAME_NPCS, payload: npcRes.data.results })
+        dispatch({type: ACTIONS.GAME_GOODS, payload: goodsRes.data})
       } catch(err) {
         if(err.response) {
           console.log(err.response.data);
@@ -98,33 +104,15 @@ export const GameProvider = ({ children }) => {
         } else {
           console.log(`Error: ${err.message}`);
         }
-      } 
+      }
     }
-
-    const fetchNegGoods = async () => {
-      try {
-        const response = await goods.get('/goods');
-        setGameGoods(response.data);
-      } catch(err) {
-        if(err.response) {
-          console.log(err.response.data);
-          console.log(err.response.status);
-          console.log(err.response.headers);
-        } else {
-          console.log(`Error: ${err.message}`);
-        }
-      } 
-    }
-
-    fetchNegGoods()
-    fetchNpc()
+    fetchGameData();
+    console.log('ran ran')
   }, [isNew])
-
-  console.log(isNew);
   
   return (
     <GameContext.Provider value={{
-      game, dispatch, startGame, newNpc, gameGoods
+      dispatch, startGame, difficulty, gameNpcs, gameGoods
     }} >
       {children}
     </GameContext.Provider>
