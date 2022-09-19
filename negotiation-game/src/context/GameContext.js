@@ -41,7 +41,6 @@ const reducer = (game, { type, payload }) => {
       if(diff === 'difficult') {
         return { ...game, gameGoods: getRandomNumOfGoods(payload, randomValuesRange(7, 10))}
       }
-      console.log(game.gameGoods)
       return
       //assigning game goods (working)
     case ACTIONS.ASSIGN_GAME_GOODS:
@@ -81,7 +80,7 @@ export const GameProvider = ({ children }) => {
   const [game, dispatch] = useReducer(reducer, {
     difficulty: 'easy'
   });
-  const { npcData, goodsData, fetchError, isLoading } = useAxiosFetch('https://randomuser.me/api/?results=5&noinfo', 'http://localhost:3500')
+  const { npcData, goodsData, fetchError, isLoading } = useAxiosFetch('https://randomuser.me/api/?results=5&noinfo', 'http://localhost:3500/goods')
   const { difficulty, gameNpcs, gameGoods } = game;
   const navigate = useNavigate()
 

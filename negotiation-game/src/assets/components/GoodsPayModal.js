@@ -3,6 +3,7 @@ import '../scss/_GoodsPayModal.scss'
 
 const GoodsPayModal = ({ gameGoods, handleUserGoodChoice }) => {
 // TODO: Create custom hook for window size and use it to position modal
+  console.log(gameGoods);
 
   return (
     <div className="goodsPayModalCtnr">
