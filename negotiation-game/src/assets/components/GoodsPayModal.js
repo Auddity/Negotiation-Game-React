@@ -1,7 +1,9 @@
 import React from 'react'
 import '../scss/_GoodsPayModal.scss'
 
-const GoodsPayModal = ({ gameGoods, handleAssignment }) => {
+const GoodsPayModal = ({ gameGoods, handleUserGoodChoice }) => {
+// TODO: Create custom hook for window size and use it to position modal
+
   return (
     <div className="goodsPayModalCtnr">
       {gameGoods.map(good => {
@@ -9,7 +11,7 @@ const GoodsPayModal = ({ gameGoods, handleAssignment }) => {
             className="good"
             key={good.id} 
             data-good-id={good.id}
-            onClick={handleAssignment}
+            onClick={handleUserGoodChoice}
           >
           <img className="goodImage" src={good.image} alt={good.name} />
           <div className="goodDetails">

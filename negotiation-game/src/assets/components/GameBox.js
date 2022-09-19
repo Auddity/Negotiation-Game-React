@@ -14,7 +14,7 @@ const GameBox = () => {
     setModal(prev => prev = !prev)
   }
 
-  const handleAssignment = e => {
+  const handleUserGoodChoice = e => {
     console.log(e.currentTarget);
   }
   
@@ -37,7 +37,7 @@ const GameBox = () => {
       {modal &&
         <GoodsPayModal 
           gameGoods={gameGoods} 
-          handleAssignment={handleAssignment}
+          handleAssignment={handleUserGoodChoice}
         />
       }
       

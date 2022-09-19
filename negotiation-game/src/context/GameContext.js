@@ -35,26 +35,27 @@ const reducer = (game, { type, payload }) => {
       return { ...game, gameNpcs: payload}
     case ACTIONS.GAME_GOODS:
       if(diff === 'easy') {
-        return { ...game, gameGoods: getRandomNumOfGoods(payload, difficultyRandomValues(3, 4)) }
+        return { ...game, gameGoods: getRandomNumOfGoods(payload, randomValuesRange(3, 4)) }
       }
       if(diff === 'moderate') {
-        return { ...game, gameGoods: getRandomNumOfGoods(payload, difficultyRandomValues(5, 6))}
+        return { ...game, gameGoods: getRandomNumOfGoods(payload, randomValuesRange(5, 6))}
       }
       if(diff === 'difficult') {
-        return { ...game, gameGoods: getRandomNumOfGoods(payload, difficultyRandomValues(7, 10))}
+        return { ...game, gameGoods: getRandomNumOfGoods(payload, randomValuesRange(7, 10))}
       }
       console.log(game.gameGoods)
       return
       //assigning game goods (working)
     case ACTIONS.ASSIGN_GAME_GOODS:
-      return
+      // Select 1 to 5 goods from game good pool
+      return 
       
     default:
   }
 }
 
 // Determine random values for goods used in each new game.
-const difficultyRandomValues = (min, max) => {
+const randomValuesRange = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
@@ -72,6 +73,14 @@ const getRandomNumOfGoods = (arr, n) => {
   return result
 }
 
+const getNegotiationGoods = (arr, n) => {
+  let result = new Array(n),
+      len = arr.length;
+  while(len--) {
+    result.push()
+  }
+}
+
 export const GameProvider = ({ children }) => {
   const [game, dispatch] = useReducer(reducer, {
     difficulty: 'easy'
@@ -81,31 +90,32 @@ export const GameProvider = ({ children }) => {
 
   const startGame = () => {
     dispatch({ type: ACTIONS.TURNS })
+    dispatch({ type: ACTIONS.ASSIGN_GAME_GOODS })
     navigate('game')
   }
 
   // Fetch assets for new game
   // This is called twice, is it because of two States being updated in the Hook despite the dependancy?
-  useEffect(() => {
-    const fetchGameAssets = async () => {
-      try {
-        const npcRes = await npc.get('/api');
-        const goodsRes = await goods.get('/goods')
-        dispatch({ type: ACTIONS.GAME_NPCS, payload: npcRes.data.results })
-        dispatch({type: ACTIONS.GAME_GOODS, payload: goodsRes.data})
-      } catch(err) {
-        if(err.response) {
-          console.log(err.response.data);
-          console.log(err.response.status);
-          console.log(err.response.headers);
-        } else {
-          console.log(`Error: ${err.message}`);
-        }
-      }
-    }
-    fetchGameAssets();
-    console.log('useEffect')
-  }, [dispatch])
+  // useEffect(() => {
+  //   const fetchGameAssets = async () => {
+  //     try {
+  //       const npcRes = await npc.get('/api');
+  //       const goodsRes = await goods.get('/goods')
+  //       dispatch({ type: ACTIONS.GAME_NPCS, payload: npcRes.data.results })
+  //       dispatch({type: ACTIONS.GAME_GOODS, payload: goodsRes.data})
+  //     } catch(err) {
+  //       if(err.response) {
+  //         console.log(err.response.data);
+  //         console.log(err.response.status);
+  //         console.log(err.response.headers);
+  //       } else {
+  //         console.log(`Error: ${err.message}`);
+  //       }
+  //     }
+  //   }
+  //   fetchGameAssets();
+  //   console.log('useEffect')
+  // }, [dispatch])
   
   
   return (
