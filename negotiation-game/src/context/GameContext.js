@@ -42,7 +42,11 @@ const reducer = (game, { type, payload }) => {
         return { ...game, gameGoods: getRandomNumOfGoods(payload, randomValuesRange(7, 10))}
       }
       return
-      //assigning game goods (working)
+      // TODO: assigning game goods (working)
+      // Links that might help with creating the random array 
+      // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/copyWithin
+      // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/fill
+      
     case ACTIONS.ASSIGN_GAME_GOODS:
       // Select 1 to 5 goods from game good pool
       return 
