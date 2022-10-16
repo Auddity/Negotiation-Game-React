@@ -1,7 +1,9 @@
+// NO LONGER NECESSARY
+
 import axios from "axios";
 
 export default axios.create({
-  baseURL: 'https://randomuser.me/api/?results=5&noinfo',
+  baseURL: 'https://randomuser.me/api/?results=5&inc=name,picture,nat&noinfo',
   dataType: 'json',
   headers: {
     "content-type": "text/html; charset=utf-8",

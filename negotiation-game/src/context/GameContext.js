@@ -84,7 +84,7 @@ export const GameProvider = ({ children }) => {
   const [game, dispatch] = useReducer(reducer, {
     difficulty: 'easy'
   });
-  const { npcData, goodsData, fetchError, isLoading } = useAxiosFetch('https://randomuser.me/api/?results=5&noinfo', 'http://localhost:3500/goods')
+  const { npcData, goodsData, fetchError, isLoading } = useAxiosFetch('https://randomuser.me/api/?results=5&inc=name,picture,nat&noinfo', 'http://localhost:3500/goods')
   const { difficulty, gameNpcs, gameGoods } = game;
   const navigate = useNavigate()
 
